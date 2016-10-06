@@ -19,7 +19,7 @@ module Decidim
       end
 
       def display_value(model, attr)
-        association = model.class.reflect_on_all_associations.find{|a| a.name == attr}
+        association = model.class.reflect_on_all_associations.detect { |a| a.name == attr }
         if association.present?
           title = model.send(association.name).try(:name) || model.send(association.name).try(:title)
           content_tag(:dd, title)
