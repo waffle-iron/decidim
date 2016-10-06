@@ -50,6 +50,8 @@ en:
             created_at: Created at
             title: Title
           name: Participatory process
+          validations:
+            slug_uniqueness: another participatory process with the same slug already exists
       organizations:
         create:
           error: There was an error when creating a new organization.
