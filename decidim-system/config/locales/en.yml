@@ -45,6 +45,11 @@ en:
             created_at: Created at
             name: Name
           name: Organization
+        participatory_process:
+          fields:
+            created_at: Created at
+            title: Title
+          name: Participatory process
       organizations:
         create:
           error: There was an error when creating a new organization.

@@ -1,0 +1,33 @@
+<% content_for :title do %>
+  <h2><%= t "decidim.admin.titles.participatory_processes" %></h2>
+<% end %>
+
+<div class="actions title">
+  <%= link_to t("actions.new", scope: "decidim.system", name: t("models.participatory_process.name", scope: "decidim.system")), ['new', 'participatory_process'], class: 'new' %>
+</div>
+
+<table class="stack">
+  <thead>
+    <tr>
+      <th><%= t("models.participatory_process.fields.title", scope: "decidim.system") %></th>
+      <th><%= t("models.participatory_process.fields.created_at", scope: "decidim.system") %></th>
+      <th class="actions"><%= t("actions.title", scope: "decidim.system") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @participatory_processes.each do |process| %>
+      <tr>
+        <td>
+          <%= link_to process.title, process %><br />
+        </td>
+        <td>
+          <%= l process.created_at, format: :short %>
+        </td>
+        <td class="actions">
+          <%= link_to t("actions.edit", scope: "decidim.system"), ['edit', process] %>
+          <%= link_to t("actions.destroy", scope: "decidim.system"), process, method: :delete, class: "small alert button", data: { confirm: t("actions.confirm_destroy", scope: "decidim.system") } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -4,5 +4,24 @@ en:
     admin:
       menu:
         dashboard: Dashboard
+        participatory_processes: Participatory processes
+      participatory_processes:
+        create:
+          error: There was an error creating a new participatory process.
+          success: Participatory process created successfully
+        destroy:
+          success: Participatory process successfully destroyed
+        edit:
+          title: Edit participatory process
+          update: Update participatory process
+        index:
+          title: Participatory processes
+        new:
+          create: Create participatory process
+          title: New participatory process
+        update:
+          error: There was an error when updating this participatory process.
+          success: Participatory process updated successfully
       titles:
         dashboard: Dashboard
+        participatory_processes: Participatory processes

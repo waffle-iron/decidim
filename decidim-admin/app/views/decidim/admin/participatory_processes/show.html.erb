@@ -1,0 +1,18 @@
+<% content_for :title do %>
+  <h2><%= link_to @participatory_process.title, @participatory_process %></h2>
+  <h3 class="subheader"><%= @participatory_process.subtitle %></h3>
+<% end %>
+
+<div class="actions">
+  <hr />
+  <%= link_to t("decidim.system.actions.edit"), ['edit', @participatory_process] %>
+  <%= link_to t("decidim.system.actions.destroy"), @participatory_process, method: :delete, class: "alert button", data: { confirm: t("decidim.system.actions.confirm_destroy") } %>
+</div>
+
+<%= display_for @participatory_process,
+  :title,
+  :subtitle,
+  :hashtag,
+  :short_description,
+  :description
+  %>
