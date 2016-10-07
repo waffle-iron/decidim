@@ -3,7 +3,7 @@
 require "spec_helper"
 
 describe "Manage participatory processes", type: :feature do
-  let(:admin) { create(:admin) }
+  let(:admin) { create(:user, :admin) }
   let(:participatory_process) { create(:process) }
   let!(:participatory_process2) { create(:process) }
 
