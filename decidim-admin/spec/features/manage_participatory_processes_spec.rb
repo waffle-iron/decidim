@@ -6,7 +6,6 @@ describe "Manage participatory processes", type: :feature do
   let(:organization) { create(:organization) }
   let(:admin) { create(:user, :admin, :confirmed, organization: organization) }
   let!(:participatory_process) { create(:process, organization: organization) }
-  let!(:participatory_process2) { create(:process, organization: organization) }
 
   before do
     switch_to_host(organization.host)
@@ -57,17 +56,39 @@ describe "Manage participatory processes", type: :feature do
     end
   end
 
-  it "deletes an participatory_process" do
-    within find("tr", text: participatory_process2.title) do
-      click_link "Destroy"
+  context "deleting a participatory process" do
+    let!(:participatory_process2) { create(:process, organization: organization) }
+
+    before do
+      visit decidim_admin.participatory_processes_path
     end
 
-    within ".flash" do
-      expect(page).to have_content("successfully")
+    it "deletes a participatory_process" do
+      within find("tr", text: participatory_process2.title) do
+        click_link "Destroy"
+      end
+
+      within ".flash" do
+        expect(page).to have_content("successfully")
+      end
+
+      within "table" do
+        expect(page).to_not have_content(participatory_process2.title)
+      end
+    end
+  end
+
+  context "when there are multiple organizations in the system" do
+    let!(:external_participatory_process) { create(:process) }
+
+    before do
+      visit decidim_admin.participatory_processes_path
     end
 
-    within "table" do
-      expect(page).to_not have_content(participatory_process2.title)
+    it "doesn't let the admin manage processes form other organizations" do
+      within "table" do
+        expect(page).to_not have_content(external_participatory_process.title)
+      end
     end
   end
 end

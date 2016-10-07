@@ -7,7 +7,7 @@ module Decidim
     #
     class ParticipatoryProcessesController < ApplicationController
       def index
-        @participatory_processes = ParticipatoryProcess.all
+        @participatory_processes = collection
       end
 
       def new
@@ -31,12 +31,12 @@ module Decidim
       end
 
       def edit
-        @participatory_process = ParticipatoryProcess.find(params[:id])
+        @participatory_process = collection.find(params[:id])
         @form = ParticipatoryProcessForm.from_model(@participatory_process)
       end
 
       def update
-        @participatory_process = ParticipatoryProcess.find(params[:id])
+        @participatory_process = collection.find(params[:id])
         @form = ParticipatoryProcessForm.from_params(params)
 
         UpdateParticipatoryProcess.call(@participatory_process, @form) do
@@ -53,14 +53,20 @@ module Decidim
       end
 
       def show
-        @participatory_process = ParticipatoryProcess.find(params[:id])
+        @participatory_process = collection.find(params[:id])
       end
 
       def destroy
-        @participatory_process = ParticipatoryProcess.find(params[:id]).destroy!
+        @participatory_process = collection.find(params[:id]).destroy!
         flash[:notice] = I18n.t("participatory_processes.destroy.success", scope: "decidim.admin")
 
         redirect_to participatory_processes_path
+      end
+
+      private
+
+      def collection
+        current_organization.participatory_processes
       end
     end
   end

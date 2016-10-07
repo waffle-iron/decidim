@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 module Decidim
   module Admin
-    # A form object used to create organizations from the system dashboard.
+    # A form object used to create participatory processes from the admin
+    # dashboard.
     #
     class ParticipatoryProcessForm < Rectify::Form
       mimic :participatory_process
