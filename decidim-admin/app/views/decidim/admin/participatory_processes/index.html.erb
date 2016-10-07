@@ -3,14 +3,14 @@
 <% end %>
 
 <div class="actions title">
-  <%= link_to t("actions.new", scope: "decidim.admin", name: t("models.participatory_process.name", scope: "decidim.system")), ['new', 'participatory_process'], class: 'new' %>
+  <%= link_to t("actions.new", scope: "decidim.admin", name: t("models.participatory_process.name", scope: "decidim.admin")), ['new', 'participatory_process'], class: 'new' %>
 </div>
 
 <table class="stack">
   <thead>
     <tr>
-      <th><%= t("models.participatory_process.fields.title", scope: "decidim.system") %></th>
-      <th><%= t("models.participatory_process.fields.created_at", scope: "decidim.system") %></th>
+      <th><%= t("models.participatory_process.fields.title", scope: "decidim.admin") %></th>
+      <th><%= t("models.participatory_process.fields.created_at", scope: "decidim.admin") %></th>
       <th class="actions"><%= t("actions.title", scope: "decidim.admin") %></th>
     </tr>
   </thead>

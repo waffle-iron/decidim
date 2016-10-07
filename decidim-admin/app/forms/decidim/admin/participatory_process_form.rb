@@ -23,7 +23,7 @@ module Decidim
         return unless ParticipatoryProcess.where(slug: slug).where.not(id: id).any?
 
         errors.add(:email, I18n.t("models.participatory_process.validations.slug_uniqueness",
-                                  scope: "decidim.system"))
+                                  scope: "decidim.admin"))
       end
     end
   end
