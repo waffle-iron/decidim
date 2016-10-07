@@ -7,7 +7,6 @@ en:
         destroy: Destroy
         edit: Edit
         new: New %{name}
-        save: Save
         title: Actions
       menu:
         dashboard: Dashboard
