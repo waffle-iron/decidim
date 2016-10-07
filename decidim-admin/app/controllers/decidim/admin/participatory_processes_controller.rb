@@ -17,7 +17,7 @@ module Decidim
       def create
         @form = ParticipatoryProcessForm.from_params(params)
 
-        CreateParticipatoryProcess.call(@form, organization) do
+        CreateParticipatoryProcess.call(@form, current_organization) do
           on(:ok) do
             flash[:notice] = I18n.t("participatory_processes.create.success", scope: "decidim.admin")
             redirect_to participatory_processes_path
@@ -61,12 +61,6 @@ module Decidim
         flash[:notice] = I18n.t("participatory_processes.destroy.success", scope: "decidim.admin")
 
         redirect_to participatory_processes_path
-      end
-
-      private
-
-      def organization
-        current_user.organization
       end
     end
   end

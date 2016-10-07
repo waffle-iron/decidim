@@ -41,7 +41,7 @@ module Decidim
           slug: form.slug,
           hashtag: form.hashtag,
           description: form.description,
-          short_description: form.short_description,
+          short_description: form.short_description
         }
       end
     end
