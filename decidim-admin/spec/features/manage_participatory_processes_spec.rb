@@ -3,12 +3,14 @@
 require "spec_helper"
 
 describe "Manage participatory processes", type: :feature do
-  let(:admin) { create(:user, :admin) }
-  let(:participatory_process) { create(:process) }
-  let!(:participatory_process2) { create(:process) }
+  let(:organization) { create(:organization) }
+  let(:admin) { create(:user, :admin, :confirmed, organization: organization) }
+  let!(:participatory_process) { create(:process, organization: organization) }
+  let!(:participatory_process2) { create(:process, organization: organization) }
 
   before do
-    login_as admin, scope: :admin
+    switch_to_host(organization.host)
+    login_as admin, scope: :user
     visit decidim_admin.participatory_processes_path
   end
 
@@ -36,7 +38,7 @@ describe "Manage participatory processes", type: :feature do
   end
 
   it "updates an participatory_process" do
-    within find("tr", text: participatory_process.email) do
+    within find("tr", text: participatory_process.title) do
       click_link "Edit"
     end
 
