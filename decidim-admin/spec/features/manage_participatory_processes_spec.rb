@@ -9,7 +9,7 @@ describe "Manage participatory processes", type: :feature do
 
   before do
     login_as admin, scope: :admin
-    visit decidim_system.participatory_processes_path
+    visit decidim_admin.participatory_processes_path
   end
 
   it "creates a new participatory_process" do
